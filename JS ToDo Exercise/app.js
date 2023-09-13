@@ -1,8 +1,21 @@
 const form = document.querySelector('form');
 const list = document.querySelector('ul');
-if(localStorage.getItem('Listitem')){
-    const oldList = JSON.parse(localStorage.getItem('Listitem'));
-    list.innerHTML = oldList
+const taskList = JSON.parse(localStorage.getItem("Listitem")) || [];
+console.log(taskList)
+for (let i = 0; i<taskList.length; i++){
+    if (taskList[i].task !== ''){
+        const newLi = document.createElement('li')
+        const newCheckbox = document.createElement('input')
+        const newButton = document.createElement('button')
+        newCheckbox.setAttribute('type', 'checkbox')
+        newButton.innerText = 'Remove'
+        newButton.classList.add('new-button')
+        newLi.innerText = taskList[i].task
+        newLi.prepend(newCheckbox)
+        newLi.append(newButton)
+        list.append(newLi)
+    }
+
 }
 
 form.addEventListener("submit", function(e){
@@ -12,15 +25,16 @@ form.addEventListener("submit", function(e){
     const newCheckbox = document.createElement('input')
     const newButton = document.createElement('button')
     newCheckbox.setAttribute('type', 'checkbox')
+    newLi.innerText = newItem.value
+    taskList.push({task: newLi.innerText})
+    localStorage.setItem('Listitem', JSON.stringify(taskList))
     newButton.innerText = 'Remove'
     newButton.classList.add('new-button')
-    newLi.innerText = newItem.value
     newLi.prepend(newCheckbox)
     newLi.append(newButton)
     list.append(newLi)
     form.reset()
-    const completeItem = list.innerHTML
-    localStorage.setItem('Listitem', JSON.stringify(completeItem))
+    
 })
 
 list.addEventListener('click', function(event){
@@ -29,12 +43,14 @@ list.addEventListener('click', function(event){
         target.classList.toggle('done');
     }
     else if (event.target.tagName === 'BUTTON'){
-        let localList = localStorage.getItem('Listitem');
-        let text = JSON.stringify(target.innerHTML);
-        console.log(text);
-        localList = localList.replace(text, '');
-        localStorage.setItem('Listitem', localList);
+        
+        for (let i = 0; i<taskList.length; i++){
+            const savedValue = taskList[i].task.concat('Remove')
+            if (target.innerText === savedValue){
+                taskList.splice(i, 1)
+            }
+            localStorage.setItem('Listitem', JSON.stringify(taskList))
+        }
         target.remove();
     }
 })
-
