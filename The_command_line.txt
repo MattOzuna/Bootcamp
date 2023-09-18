@@ -1,0 +1,41 @@
+Part 1
+1. mkdir first
+2. cd first
+3. touch person.txt
+4. mv person.txt another.txt
+5. cp another.txt copy.txt
+6. rm copy.txt
+7. cp -r first second/
+8. cp -r second
+
+Part 2
+1. man stands for manual and when paired with a command with give details about the 
+    command and all relevant flags. You can scoll with the return key and 'q' will exit.
+2. the -l flag will list all items in the long format
+    -a will show hidden files
+3. option and left or right arrow key
+4. control e for end
+5. control a
+6. control w
+7. the shell is the program that reads and executes the commands
+    the terminal is where you write the commands to be executed
+8. the absolute path is the path from the root directory to any given file or folder
+9. the relative path is the path to a file or folder relative to your current directory
+10. a flag is a specialized version of a command
+    3 example:
+    ls -a
+    ls -l
+    cp -r
+11. -f      Attempt to remove the files without prompting for confirmation,
+             regardless of the file's permissions.  If the file does not
+             exist, do not display a diagnostic message or modify the exit
+             status to reflect an error.  The -f option overrides any previous
+             -i options.
+    -r      Equivalent to -R. 
+    -R      Attempt to remove the file hierarchy rooted in each file
+             argument.  The -R option implies the -d option.  If the -i option
+             is specified, the user is prompted for confirmation before each
+             directory's contents are processed (as well as before the attempt
+             is made to remove the directory).  If the user does not respond
+             affirmatively, the file hierarchy rooted in that directory is
+             skipped.
