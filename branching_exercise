@@ -1,0 +1,12 @@
+1. git branch example branch or git checkout -b
+2. I googled it. this is what I found
+Fast Forward	                    Recursive
+No new commits on the master	    New commits on the master
+Linear History	                    Commit 2 parents
+No merge commits	                Merge commit is created
+git rebase	                        git merge–no-ff
+
+3. git checkout
+4. git branch -d
+5. When there are commits in different branches referencing the same file name
+
